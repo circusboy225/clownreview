@@ -5,34 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Clown Image</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
         img {
-            width: 798px;
-            height: 846px;
+            max-width: 798px;
+            max-height: 846px;
+            width: auto;
+            height: auto;
             cursor: pointer;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
     <script>
         let images = [
             "clownnotcracked.jpeg",
-            "clown cracked1.png",
-            "clown cracked2.png",
-            "clown cracked3.png"
+            "clowncracked1.png",
+            "clowncracked2.png",
+            "clowncracked3.png"
         ];
         let currentIndex = 0;
 
         function changeImage() {
             const imgElement = document.getElementById("clownImage");
+            
+            // Increment the image index
             currentIndex++;
+
+            // If there are more images in the sequence, update the image source
             if (currentIndex < images.length) {
                 imgElement.src = images[currentIndex];
+                imgElement.alt = `Clown Cracked ${currentIndex}`;
             } else {
-                
+                // Redirect to the specified URL after the last image
                 window.location.href = "https://www.mycircus.party/eye";
             }
         }
     </script>
 </head>
 <body>
+    <!-- Display the first image -->
     <img id="clownImage" src="clownnotcracked.jpeg" alt="Clown Image" onclick="changeImage()">
 </body>
 </html>
