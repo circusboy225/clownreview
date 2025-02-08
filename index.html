@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Clown Image</title>
+    <style>
+        img {
+            width: 798px;
+            height: 846px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let images = [
+            "clownnotcracked.jpeg",
+            "clown cracked1.png",
+            "clown cracked2.png",
+            "clown cracked3.png"
+        ];
+        let currentIndex = 0;
+
+        function changeImage() {
+            const imgElement = document.getElementById("clownImage");
+            currentIndex++;
+            if (currentIndex < images.length) {
+                imgElement.src = images[currentIndex];
+            } else {
+                
+                window.location.href = "https://www.mycircus.party/eye";
+            }
+        }
+    </script>
+</head>
+<body>
+    <img id="clownImage" src="clownnotcracked.jpeg" alt="Clown Image" onclick="changeImage()">
+</body>
+</html>
