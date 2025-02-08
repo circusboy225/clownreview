@@ -14,45 +14,54 @@
             background-color: #f4f4f4;
         }
         img {
-            max-width: 798px;
-            max-height: 846px;
-            width: auto;
-            height: auto;
+            width: 798px;
+            height: 846px;
+            object-fit: contain; /* Ensures images fit within dimensions without distortion */
             cursor: pointer;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
     <script>
         // Array of image filenames
-        let images = [
-            "clownnotcracked.jpeg", // Ensure this matches your actual file name and extension
-            "clowncracked1.png",
-            "clowncracked2.png",
-            "clowncracked3.png"
+        const images = [
+            "clownnotcracked.jpeg", // First image
+            "clowncracked1.png",   // Second image
+            "clowncracked2.png",   // Third image
+            "clowncracked3.png"    // Fourth image (redirect after this)
         ];
-        let currentIndex = 0;
+        
+        let currentIndex = 0; // Track the current image index
 
         function changeImage() {
             const imgElement = document.getElementById("clownImage");
-            
-            // Increment the image index
+
+            // Increment the index to show the next image
             currentIndex++;
 
-            // If there are more images in the sequence, update the image source
             if (currentIndex < images.length) {
+                // Update the image source to the next one in the sequence
                 imgElement.src = images[currentIndex];
-                imgElement.alt = `Clown Cracked ${currentIndex}`;
-                console.log(`Changed to: ${images[currentIndex]}`); // Debugging log
+                imgElement.alt = `Clown Image ${currentIndex + 1}`;
             } else {
-                // Redirect to the specified URL after the last image
+                // Redirect to the URL when the last image is clicked
                 window.location.href = "https://www.mycircus.party/eye";
             }
+        }
+
+        function handleImageError() {
+            alert("Failed to load an image. Please check your file paths or ensure all images are uploaded.");
         }
     </script>
 </head>
 <body>
     <!-- Display the first image -->
-    <img id="clownImage" src="clownnotcracked.jpeg" alt="Clown Image" onclick="changeImage()">
+    <img 
+        id="clownImage" 
+        src="clownnotcracked.jpeg" 
+        alt="Clown Image" 
+        onclick="changeImage()" 
+        onerror="handleImageError()"
+    >
 </body>
 </html>
