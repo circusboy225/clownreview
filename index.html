@@ -24,8 +24,9 @@
         }
     </style>
     <script>
+        // Array of image filenames
         let images = [
-            "clownnotcracked.jpeg",
+            "clownnotcracked.jpeg", // Ensure this matches your actual file name and extension
             "clowncracked1.png",
             "clowncracked2.png",
             "clowncracked3.png"
@@ -42,6 +43,7 @@
             if (currentIndex < images.length) {
                 imgElement.src = images[currentIndex];
                 imgElement.alt = `Clown Cracked ${currentIndex}`;
+                console.log(`Changed to: ${images[currentIndex]}`); // Debugging log
             } else {
                 // Redirect to the specified URL after the last image
                 window.location.href = "https://www.mycircus.party/eye";
